@@ -13,7 +13,12 @@ class Storage {
 
     removeItem(itemToRemove) {
         const index = this.#items.indexOf(itemToRemove);
-        return this.#items.splice(index, 1);
+        if (index === -1) {
+            console.log("Даного товару в базі не має");
+        } else {
+            this.#items.splice(index, 1);
+        }
+        
     }
 }
 
@@ -23,3 +28,4 @@ storage.addItem("Droid");
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
 storage.removeItem("Prolonger");
 console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+storage.removeItem("Propeler");
